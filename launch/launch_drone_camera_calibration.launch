@@ -1,0 +1,27 @@
+<launch>
+        <arg name="droneip" default="192.168.1.1" />
+        <node name="ardrone_driver" pkg="ardrone_autonomy" type="ardrone_driver" output="screen" args="-ip $(arg droneip)">
+                <param name="navdata_demo" value="False" />
+                <param name="realtime_navdata" value="True" />
+                <param name="realtime_video" value="True" />
+                <param name="looprate" value="30" />
+        </node>
+        
+
+        <node pkg="rosbag" type="record" name="bag_record" args="-O $(find ardrone_autonomy)/bag_files/drone_output 
+/ardrone/front/camera_info
+/ardrone/front/image_raw
+/ardrone/imu
+/ardrone/mag
+/ardrone/navdata
+/ardrone/odometry
+/rosout
+/rosout_agg
+/tf"/>
+
+       
+
+
+
+</launch>
+

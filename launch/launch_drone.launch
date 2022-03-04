@@ -6,18 +6,25 @@
                 <param name="realtime_video" value="True" />
                 <param name="looprate" value="30" />
         </node>
-        <node pkg="rosservice" type="rosservice" name="rosservice" args="call --wait /ardrone/setcamchannel 1" />     
+       
 
         <node pkg="rosbag" type="record" name="bag_record" args="-O $(find ardrone_autonomy)/bag_files/drone_output 
+/ardrone/camera_info
+/ardrone/image_raw
 /ardrone/bottom/camera_info
 /ardrone/bottom/image_raw
+/ardrone/front/camera_info
+/ardrone/front/image_raw
+/ardrone/image_raw/compressed 
 /ardrone/imu
 /ardrone/mag
 /ardrone/navdata
 /ardrone/odometry
 /rosout
+/ardrone/image_raw/theora
 /rosout_agg
 /tf"/>
+
 
 <node name="drone_commands" pkg="ardrone_autonomy" type="drone_commands.py" />
 

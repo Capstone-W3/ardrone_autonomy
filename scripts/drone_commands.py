@@ -57,8 +57,8 @@ if __name__== "__main__":
 
        while not rospy.is_shutdown():
 
-            while altitude < 0.1:
-                drone.Command_directions(0,0,0.05,0,0,0)
+            while altitude < 1:
+                drone.Command_directions(0,0,0.5,0,0,0)
                 rospy.sleep(1)
 
             while forward_dist < 0.1:
